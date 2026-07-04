@@ -74,14 +74,19 @@ console.log(response.text);
             setSelectedRole(role);
 
             setPage("interview");
+}
 
-        } catch (error) {
+        // } catch (error) {
 
-            console.log(error);
+        //     console.log(error);
 
-            alert("Unable to generate interview questions.");
+        //     alert("Unable to generate interview questions.");
 
-        }
+        // }
+        catch (error) {
+    console.error(error);
+    alert(error.message);
+}
 
         setLoading(false);
 
