@@ -6,8 +6,10 @@ function Interview({
     questions,
     answers,
     setAnswers,
-    setResult
-}) {
+    setResult,
+    selectedRole,
+    experience
+}){
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answer, setAnswer] = useState("");
@@ -95,6 +97,19 @@ Return ONLY valid JSON.
                 <h2>
                     Question {currentQuestion + 1} of {questions.length}
                 </h2>
+                <div
+    style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginTop: "15px",
+        marginBottom: "20px",
+        fontWeight: "600",
+        color: "#64748b"
+    }}
+>
+    <span>💼 {selectedRole}</span>
+    <span>{experience === "Fresher" ? "🎓 Fresher" : "👨‍💼 Experienced"}</span>
+</div>
 
                 <div className="progress">
 

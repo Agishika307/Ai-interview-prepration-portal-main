@@ -13,6 +13,7 @@ import "./App.css";
 function App() {
   const [questions, setQuestions] = useState([]);
 const [selectedRole, setSelectedRole] = useState("");
+const [experience, setExperience] = useState("");
 const [resumeText, setResumeText] = useState("");
   const [isLogin, setIsLogin] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
@@ -68,8 +69,9 @@ const [result, setResult] = useState(null);
     setPage={setPage}
     setQuestions={setQuestions}
     setSelectedRole={setSelectedRole}
+    setExperience={setExperience}
     resumeText={resumeText}
-  />
+/>
 }
 
            {
@@ -78,10 +80,11 @@ const [result, setResult] = useState(null);
       setPage={setPage}
       questions={questions}
       selectedRole={selectedRole}
+      experience={experience}
       answers={answers}
       setAnswers={setAnswers}
       setResult={setResult}
-  />
+/>
 }
               {
                 page === "result" && <Result

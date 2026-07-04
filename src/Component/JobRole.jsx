@@ -5,9 +5,11 @@ function Jobrole({
     setPage,
     setQuestions,
     setSelectedRole,
+    setExperience: setAppExperience,
     resumeText
 }) {
     const [role, setRole] = useState("");
+    const [experience, setExperience] = useState("");
     const [loading, setLoading] = useState(false);
 
     const roles = [
@@ -25,34 +27,69 @@ function Jobrole({
     console.log("Selected Role:", role);
 
     if (!role) {
-        alert("Please select a job role.");
-        return;
-    }
+    alert("Please select a job role.");
+    return;
+}
+
+if (!experience) {
+    alert("Please select your experience level.");
+    return;
+}
 
         setLoading(true);
 
         try {
+const prompt = `
+You are an expert technical interviewer.
 
-            const prompt = `
-You are a professional technical interviewer.
+Candidate Details:
 
-Candidate Resume:
+Resume:
 ${resumeText}
 
 Target Job Role:
 ${role}
 
-Based ONLY on the resume and the selected job role, generate 10 interview questions.
+Experience Level:
+${experience}
 
-Requirements:
-- Ask about the candidate's projects mentioned in the resume.
-- Ask about the candidate's technical skills.
-- Ask about technologies used.
-- Ask scenario-based questions.
-- Include 2 HR questions.
-- Do NOT ask generic questions unless they are related to the resume.
-- Return only the questions, one per line.
+Your task is to generate a personalized mock interview.
+
+Rules:
+
+1. Analyze the uploaded resume carefully.
+
+2. Generate exactly 10 interview questions.
+
+3. Personalize the questions based on:
+   - Candidate's projects
+   - Technical skills
+   - Technologies mentioned
+   - Selected job role
+
+4. If Experience Level is "Fresher":
+   - Ask beginner to intermediate questions.
+   - Focus on concepts and projects.
+   - Do not ask questions that require industry experience.
+   - Keep the interview suitable for internships and campus placements.
+
+5. If Experience Level is "Experienced":
+   - Ask intermediate to advanced questions.
+   - Include real-world scenarios.
+   - Ask optimization and debugging questions.
+   - Include practical development questions.
+
+6. Interview Structure:
+   - 6 Technical Questions
+   - 2 Project-Based Questions
+   - 2 HR/Behavioral Questions
+
+7. Keep every question under 30 words.
+
+8. Return ONLY the questions.
+Do not include numbering, headings, explanations, markdown, or any extra text.
 `;
+           
             const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
     contents: prompt
@@ -76,19 +113,16 @@ console.log(response.text);
             setPage("interview");
 }
 
-        // } catch (error) {
+         catch (error) {
 
-        //     console.log(error);
+            console.log(error);
 
-        //     alert("Unable to generate interview questions.");
+            alert("Unable to generate interview questions.");
 
-        // }
-        catch (error) {
-    console.error(error);
-    alert(error.message);
-}
+         }finally {
 
         setLoading(false);
+         }
 
     };
 
@@ -119,6 +153,32 @@ console.log(response.text);
                     ))}
 
                 </div>
+                <h2 style={{ marginTop: "35px" }}>
+    Select Experience Level
+</h2>
+
+<div className="role-grid">
+
+    <div
+        className={`role ${experience === "Fresher" ? "active" : ""}`}
+onClick={() => {
+    setExperience("Fresher");
+    setAppExperience("Fresher");
+}}    >
+        🎓 Fresher
+    </div>
+
+    <div
+        className={`role ${experience === "Experienced" ? "active" : ""}`}
+        onClick={() => {
+    setExperience("Experienced");
+    setAppExperience("Experienced");
+}}
+    >
+        💼 Experienced
+    </div>
+
+</div>
 
                 <button
                     style={{ marginTop: "30px" }}

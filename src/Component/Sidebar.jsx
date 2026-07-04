@@ -1,28 +1,32 @@
+import { useEffect, useState } from "react";
 function Sidebar({ setLogin, setPage }) {
+    const [user, setUser] = useState(null);
 
-    const logout = () => {
+useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    setUser(loggedInUser);
+}, []);
 
-        setLogin(false);
-
-    };
+   const logout = () => {
+    localStorage.removeItem("loggedInUser");
+    setLogin(false);
+};
 
     return (
 
         <div className="sidebar">
 
-            <div className="profile-img">
-
-                U
-
-            </div>
+<div className="profile-img">
+    {user?.username?.charAt(0).toUpperCase() || "U"}
+</div>
 
             <h3>
-                User Name
-            </h3>
+    {user?.username || "User Name"}
+</h3>
 
             <p>
-                user@gmail.com
-            </p>
+    {user?.email || "No Email"}
+</p>
 
             <hr style={{ margin: "25px 0" }} />
 

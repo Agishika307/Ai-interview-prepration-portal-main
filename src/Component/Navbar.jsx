@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
 import logo from "../assets/image.png";
 import { FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
+    const [user, setUser] = useState(null);
+
+useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    setUser(loggedInUser);
+}, []);
 
     return (
 
@@ -40,7 +47,7 @@ function Navbar() {
 
                 <FaUserCircle className="user-icon" />
 
-                <span>Ishika</span>
+                <span>{user?.username || "Guest"}</span>
 
             </div>
 

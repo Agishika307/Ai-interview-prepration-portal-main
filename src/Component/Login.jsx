@@ -31,7 +31,9 @@ const handleLogin = () => {
 
         setError("");
 
-        setIsLogin(true);
+localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
+
+setIsLogin(true);
 
     } else {
 
