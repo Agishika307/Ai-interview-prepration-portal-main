@@ -8,7 +8,7 @@
 body {
   min-height: 100vh;
   color: #1e293b;
-  background: linear-gradient(rgba(8,15,35,.82), rgba(8,15,35,.82)), url("https://images.unsplash.com/photo-1556761175-b413da4baf72");
+  background: linear-gradient(rgba(8,15,35,.82), rgba(8,15,35,.82)), url("assets/background.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -177,12 +177,15 @@ nav a:hover {
 .dashboard {
   flex: 1;
   padding-left: 35px;
+  width: 85%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .resume-card {
- background: rgba(255,255,255,.82);
-backdrop-filter: blur(25px);
-border:1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,.25);
   border-radius: 30px;
   padding: 50px;
   text-align: center;
@@ -228,19 +231,37 @@ border:1px solid rgba(255,255,255,.25);
   color: #64748b;
 }
 
-@media (max-width: 900px) {
-  .layout {
-    flex-direction: column;
-  }
-  .sidebar {
-    width: 100%;
-  }
-  .dashboard {
-    padding: 20px 0;
-  }
-  .cards {
-    grid-template-columns: 1fr;
-  }
+@media (max-width:900px){
+
+.layout{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+    margin-bottom:25px;
+}
+
+.dashboard{
+    width:100%;
+    padding:0;
+}
+
+.role-grid{
+    grid-template-columns:1fr;
+}
+
+.info-grid{
+    grid-template-columns:1fr;
+}
+
+.resume-card,
+.job-role-card,
+.interview-card,
+.result-card{
+    padding:30px;
+}
+
 }
 
 .company-logo {
@@ -292,9 +313,9 @@ border:1px solid rgba(255,255,255,.25);
 }
 
 .job-role-card {
- background: rgba(255,255,255,.82);
-backdrop-filter: blur(25px);
-border:1px solid rgba(255,255,255,.25);;
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,.25);
   border-radius: 30px;
   padding: 40px;
   box-shadow: 0 20px 40px rgba(0,0,0,.15);
@@ -355,9 +376,10 @@ border:1px solid rgba(255,255,255,.25);;
 }
 
 .interview-card {
-background: rgba(255,255,255,.82);
-backdrop-filter: blur(25px);
-border:1px solid rgba(255,255,255,.25);  padding: 45px;
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 45px;
   border-radius: 25px;
   box-shadow: 0 20px 40px rgba(0,0,0,.15);
 }
@@ -385,8 +407,8 @@ border:1px solid rgba(255,255,255,.25);  padding: 45px;
 
 .result-card {
   background: rgba(255,255,255,.82);
-backdrop-filter: blur(25px);
-border:1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,.25);
   border-radius: 25px;
   padding: 45px;
   text-align: center;
@@ -418,4 +440,44 @@ border:1px solid rgba(255,255,255,.25);
   height: 100%;
   background: linear-gradient(135deg, #2563eb, #9333ea);
   border-radius: 20px;
+}
+.upload-card{
+    padding:50px;
+}
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    margin-top:30px;
+}
+.info-card{
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(20px);
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-6px);
+}
+
+.info-card h2{
+    color:#2563eb;
+    margin-bottom:22px;
+}
+
+.info-card ul{
+    list-style:none;
+    padding:0;
+}
+
+.info-card li{
+    padding:14px 0;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.info-card li:last-child{
+    border-bottom:none;
 }

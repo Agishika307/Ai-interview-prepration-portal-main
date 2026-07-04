@@ -59,84 +59,100 @@ function Dashboard({ setPage, setResumeText }) {
 
     return (
 
-        <div className="dashboard">
+    <div className="dashboard">
 
-            <div className="resume-card">
+        <div className="welcome-card">
 
-                <h1>Upload Resume</h1>
+            <h1>👋 Welcome to PrepAI</h1>
 
-                <p>
-                    Upload your resume to start your AI mock interview.
+            <p>
+                Upload your resume and let AI generate personalized interview
+                questions based on your skills, projects, selected job role,
+                and experience level.
+            </p>
+
+        </div>
+
+        <div className="resume-card">
+
+            <h1>Upload Resume</h1>
+
+            <p>
+                Upload your resume to start your AI mock interview.
+            </p>
+
+            <input
+                type="file"
+                accept=".pdf"
+                onChange={(e) => setResume(e.target.files[0])}
+            />
+
+            {resume && (
+
+                <p
+                    style={{
+                        marginTop: "15px",
+                        color: "#16a34a",
+                        fontWeight: "600"
+                    }}
+                >
+                    ✅ {resume.name}
                 </p>
 
-                <input
-                    type="file"
-                    accept=".pdf"
-                    onChange={(e) => setResume(e.target.files[0])}
-                />
+            )}
 
-                {resume && (
+            <button onClick={handleUpload}>
+                Upload Resume
+            </button>
 
-                    <p
-                        style={{
-                            marginTop: "15px",
-                            color: "green",
-                            fontWeight: "bold"
-                        }}
-                    >
-                        ✅ {resume.name}
-                    </p>
+            {resume && (
 
-                )}
-
-                <button onClick={handleUpload}>
-                    Upload Resume
+                <button
+                    style={{ marginTop: "15px" }}
+                    onClick={() => setPage("jobrole")}
+                >
+                    Next → Select Job Role
                 </button>
 
-                {resume && (
+            )}
 
-                    <button
-                        style={{ marginTop: "15px" }}
-                        onClick={() => setPage("jobrole")}
-                    >
-                        Next → Select Job Role
-                    </button>
+        </div>
 
-                )}
+        <div className="info-grid">
+
+            <div className="info-card">
+
+                <h2>🚀 How It Works</h2>
+
+                <ul>
+                    <li>📄 Upload your Resume</li>
+                    <li>💼 Select your Job Role</li>
+                    <li>🎓 Choose Experience Level</li>
+                    <li>🤖 Start AI Interview</li>
+                    <li>📊 View AI Feedback</li>
+                </ul>
 
             </div>
 
-            <div className="cards">
+            <div className="info-card">
 
-                <div className="card">
+                <h2>✨ Features</h2>
 
-                    <h2>12</h2>
-
-                    <p>Mock Interviews</p>
-
-                </div>
-
-                <div className="card">
-
-                    <h2>85%</h2>
-
-                    <p>Best Score</p>
-
-                </div>
-
-                <div className="card">
-
-                    <h2>20</h2>
-
-                    <p>Skills Practiced</p>
-
-                </div>
+                <ul>
+                    <li>AI Resume Analysis</li>
+                    <li>Personalized Questions</li>
+                    <li>Technical + HR Interview</li>
+                    <li>Experience-based Questions</li>
+                    <li>Instant AI Feedback</li>
+                </ul>
 
             </div>
 
         </div>
 
-    );
+    </div>
+
+);
 
 }
 
