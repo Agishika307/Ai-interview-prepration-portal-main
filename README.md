@@ -136,7 +136,6 @@ This application was built as a collaborative group project. Team members contri
 * 📹 Video interview simulation
 * 📊 Performance analytics
 * ⭐ Interview history
-* 🌙 Dark mode
 * 📈 Personalized feedback and scoring
 * 🧩 Multiple interview domains (DSA, Web Development, HR, Aptitude)
 
