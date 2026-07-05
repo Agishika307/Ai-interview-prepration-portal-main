@@ -2,8 +2,6 @@
 
 An AI-powered mock interview platform built using **React** and the **Google Gemini API**. The application simulates real interview experiences by generating intelligent interview questions and assisting users in preparing for technical and HR interviews through an interactive interface.
 
-> **This project was developed collaboratively as a group project.**
-
 ---
 
 ## 🚀 Overview
