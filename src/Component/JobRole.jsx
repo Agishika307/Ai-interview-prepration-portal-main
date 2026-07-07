@@ -132,9 +132,9 @@ console.log(response.text);
 
             <div className="job-role-card">
 
-                <h1>Select Your Job Role</h1>
+                <h1 style={{color:"black"}}>Select Your Job Role</h1>
 
-                <p style={{ marginTop: "10px", color: "#64748b" }}>
+                <p style={{ marginTop: "10px", color: "#225aa7" }}>
                     Choose the role you want to prepare for.
                 </p>
 
@@ -153,7 +153,7 @@ console.log(response.text);
                     ))}
 
                 </div>
-                <h2 style={{ marginTop: "35px" }}>
+                <h2 style={{ marginTop: "35px", color: "black" }}>
     Select Experience Level
 </h2>
 
